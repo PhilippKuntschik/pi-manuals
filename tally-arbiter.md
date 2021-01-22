@@ -1,7 +1,10 @@
+# Verwendung/Administration:
+
+Standardmässig wird das Webinterface auf Port 4455 zur Verfügung gestellt.
+
 # Installation:
 
 #TODO: Node.js installieren
-
 
 --> https://github.com/josephdadams/TallyArbiter#installing-the-software
 

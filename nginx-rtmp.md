@@ -95,7 +95,7 @@ rtmp {
 
 ```
 
-Das Recording wird in diesem Beispiel mit `http://<ip-address>:8080/control/record/start?app=live&name=mystream` im Browser (oder via curl/wget) gestartet, bzw äquivalent mit `http://<ip-address>:8080/control/record/start?app=live&name=mystream` gestoppt.
+Das Recording wird in diesem Beispiel mit `http://<ip-address>:8080/control/record/start?app=live&name=mystream` im Browser (oder via curl/wget) gestartet, bzw äquivalent mit `http://<ip-address>:8080/control/record/start?app=live&name=mystream` gestoppt. Mit `name` wird hierbei der Streamkey benannt (in diesem Fall _mystream_)!
 
 Es ist auch möglich mehrere `recorder` anzulegen, und diese unabhängig voneinander zu starten/stoppen. Der HTTP-Call wird dann mit einem `rec`-Parameter erweitert: `http://<ip-address>:8080/control/record/start?app=live&name=mystream&rec=rec1`
 

@@ -5,7 +5,7 @@
 ## Den Stream recorden
 
 Das Recording wird wie folgt definiert, wobei dies auf Ebene der `application` erfolgen kann, oder in Form mehrerer `recorder`.
-((siehe Wiki)[https://github.com/arut/nginx-rtmp-module/wiki/Directives#record])
+([siehe Wiki](https://github.com/arut/nginx-rtmp-module/wiki/Directives#record))
 
 ```
 record all

@@ -37,8 +37,7 @@ rtmp {
   }
 }
 ...
-
-
+```
 
 ### Exkurs: USB Gerät (einmalig) einbinden
 

@@ -2,6 +2,67 @@
 
 ## Standard Konfiguration(en)
 
+## Den Stream recorden
+
+Das Recording wird wie folgt definiert, wobei dies auf Ebene der `application` erfolgen kann, oder in Form mehrerer `recorder`.
+((siehe Wiki)[https://github.com/arut/nginx-rtmp-module/wiki/Directives#record])
+
+```
+record all
+record_path /path/to/directory/;
+record_suffix -%H-%M-%d-%m-%y.flv;
+```
+
+Gesamtes Beispiel
+
+```
+...
+rtmp {
+  server {
+    listen 1935;
+
+    application live {
+      
+      live on;
+
+      # Enable recording
+      record all; 
+      record_path /path/to/directory/; 
+      record_suffix -%H-%M-%d-%m-%y.flv;
+      
+      # Allow only this machine to play back the stream
+      allow play 127.0.0.1;
+      deny play all;
+    }
+  }
+}
+...
+
+
+
+### Exkurs: USB Gerät (einmalig) einbinden
+
+Standardmässig bindet der Pi USB-Mediengeräte nicht automatisch ein, sondern erfordert die Eingabe eines entsprechenden `mount`-Befehls. Dieser "verlinkt" den einzubindenden Datenspeicher mit einem _leeren_ Ordner, welcher vorgängig (mit `mkdir`) erstellt wurde. Es bietet sich an, entsprechende Ordner unter `/media/` anzulegen, wobei _usbmount_ einen beliebigen neuen Ordnernamen darstellt:
+
+```
+sudo mkdir /media/usbmount
+```
+
+Die (nicht-zwingend permanente) Belegungsbezeichnung aller Datenspeicher kann mit `sudo fdisk -l` abgefragt werden. USB-Sticks werden eigentlich immer mit /dev/sd** benannt, wobei das erste Sternchen sich zu einem Buchstaben auflöst, welcher das Gerät definiert, und das zweite Sternchen eine Zahl ist, welche die Partition auf eben dem Gerät numeriert, ein Stick mit nur einer Partition könnte also `/dev/sda1` heissen.
+
+Mit `mount` dieses Gerät mit dem Ordner verknüpfen:
+
+```
+sudo mount /dev/sda1 /media/usbmount/
+```
+
+Bei eingeschalteten Zustand, vor entfernen des Sticks diesen sicher aushängen mit `
+```
+sudo umount /dev/sda1
+```
+
+
+
 ## Recordings in MP4 umwandeln
 
 Die direkte Aufnahme als MP4 wird [von diesem Modul derzeit nicht unterstützt](https://github.com/arut/nginx-rtmp-module/issues/957).
